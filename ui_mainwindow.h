@@ -17,6 +17,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QWidget>
@@ -43,6 +44,9 @@ public:
     QLabel *label_name_6;
     QLineEdit *Input_Faculty;
     QPushButton *Button_Insert_Student;
+    QPushButton *Button_Export_S;
+    QLineEdit *Input_Address_S;
+    QLabel *label;
     QWidget *tab_Employee;
     QFormLayout *formLayout_3;
     QLabel *label_name_8;
@@ -56,6 +60,9 @@ public:
     QLabel *label_post;
     QLineEdit *Input_Post;
     QPushButton *Button_Insert_Employee;
+    QPushButton *Button_Export_E;
+    QLabel *label_2;
+    QLineEdit *Input_Address_E;
     QWidget *tab_Applicants;
     QFormLayout *formLayout_6;
     QLabel *label_name_25;
@@ -67,6 +74,9 @@ public:
     QLabel *label_birth;
     QLineEdit *Input_Birthday_3;
     QPushButton *Button_Insert_Applicants;
+    QPushButton *Button_Export_A;
+    QLabel *label_3;
+    QLineEdit *Input_Address_A;
     QWidget *Find;
     QPushButton *Button_Search;
     QLineEdit *Input_Search;
@@ -111,8 +121,10 @@ public:
     QWidget *Exp_Inp;
     QLineEdit *Input_Address;
     QPushButton *Button_Import;
-    QPushButton *Button_Export;
     QPushButton *Button_Clear;
+    QRadioButton *radioButton_stu;
+    QRadioButton *radioButton_emp;
+    QRadioButton *radioButton_apl;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -125,7 +137,7 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tabWidget_2 = new QTabWidget(centralwidget);
         tabWidget_2->setObjectName(QString::fromUtf8("tabWidget_2"));
-        tabWidget_2->setGeometry(QRect(20, 20, 751, 461));
+        tabWidget_2->setGeometry(QRect(40, 30, 751, 461));
         QFont font;
         font.setPointSize(10);
         font.setBold(true);
@@ -195,7 +207,23 @@ public:
         Button_Insert_Student->setMaximumSize(QSize(16777215, 21));
         Button_Insert_Student->setFont(font);
 
-        formLayout_2->setWidget(5, QFormLayout::SpanningRole, Button_Insert_Student);
+        formLayout_2->setWidget(6, QFormLayout::SpanningRole, Button_Insert_Student);
+
+        Button_Export_S = new QPushButton(tab_Student);
+        Button_Export_S->setObjectName(QString::fromUtf8("Button_Export_S"));
+        Button_Export_S->setFont(font);
+
+        formLayout_2->setWidget(7, QFormLayout::SpanningRole, Button_Export_S);
+
+        Input_Address_S = new QLineEdit(tab_Student);
+        Input_Address_S->setObjectName(QString::fromUtf8("Input_Address_S"));
+
+        formLayout_2->setWidget(8, QFormLayout::FieldRole, Input_Address_S);
+
+        label = new QLabel(tab_Student);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        formLayout_2->setWidget(8, QFormLayout::LabelRole, label);
 
         tabWidget->addTab(tab_Student, QString());
         tab_Employee = new QWidget();
@@ -259,6 +287,22 @@ public:
 
         formLayout_3->setWidget(5, QFormLayout::SpanningRole, Button_Insert_Employee);
 
+        Button_Export_E = new QPushButton(tab_Employee);
+        Button_Export_E->setObjectName(QString::fromUtf8("Button_Export_E"));
+        Button_Export_E->setFont(font);
+
+        formLayout_3->setWidget(6, QFormLayout::SpanningRole, Button_Export_E);
+
+        label_2 = new QLabel(tab_Employee);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        formLayout_3->setWidget(7, QFormLayout::LabelRole, label_2);
+
+        Input_Address_E = new QLineEdit(tab_Employee);
+        Input_Address_E->setObjectName(QString::fromUtf8("Input_Address_E"));
+
+        formLayout_3->setWidget(7, QFormLayout::FieldRole, Input_Address_E);
+
         tabWidget->addTab(tab_Employee, QString());
         tab_Applicants = new QWidget();
         tab_Applicants->setObjectName(QString::fromUtf8("tab_Applicants"));
@@ -309,7 +353,23 @@ public:
         Button_Insert_Applicants->setMaximumSize(QSize(16777215, 21));
         Button_Insert_Applicants->setFont(font);
 
-        formLayout_6->setWidget(4, QFormLayout::SpanningRole, Button_Insert_Applicants);
+        formLayout_6->setWidget(5, QFormLayout::SpanningRole, Button_Insert_Applicants);
+
+        Button_Export_A = new QPushButton(tab_Applicants);
+        Button_Export_A->setObjectName(QString::fromUtf8("Button_Export_A"));
+        Button_Export_A->setFont(font);
+
+        formLayout_6->setWidget(6, QFormLayout::SpanningRole, Button_Export_A);
+
+        label_3 = new QLabel(tab_Applicants);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        formLayout_6->setWidget(7, QFormLayout::LabelRole, label_3);
+
+        Input_Address_A = new QLineEdit(tab_Applicants);
+        Input_Address_A->setObjectName(QString::fromUtf8("Input_Address_A"));
+
+        formLayout_6->setWidget(7, QFormLayout::FieldRole, Input_Address_A);
 
         tabWidget->addTab(tab_Applicants, QString());
         tabWidget_2->addTab(Add, QString());
@@ -510,13 +570,18 @@ public:
         Button_Import->setObjectName(QString::fromUtf8("Button_Import"));
         Button_Import->setGeometry(QRect(450, 140, 91, 31));
         Button_Import->setFont(font);
-        Button_Export = new QPushButton(Exp_Inp);
-        Button_Export->setObjectName(QString::fromUtf8("Button_Export"));
-        Button_Export->setGeometry(QRect(310, 140, 91, 31));
-        Button_Export->setFont(font);
         Button_Clear = new QPushButton(Exp_Inp);
         Button_Clear->setObjectName(QString::fromUtf8("Button_Clear"));
         Button_Clear->setGeometry(QRect(170, 140, 91, 31));
+        radioButton_stu = new QRadioButton(Exp_Inp);
+        radioButton_stu->setObjectName(QString::fromUtf8("radioButton_stu"));
+        radioButton_stu->setGeometry(QRect(170, 110, 84, 19));
+        radioButton_emp = new QRadioButton(Exp_Inp);
+        radioButton_emp->setObjectName(QString::fromUtf8("radioButton_emp"));
+        radioButton_emp->setGeometry(QRect(310, 110, 84, 19));
+        radioButton_apl = new QRadioButton(Exp_Inp);
+        radioButton_apl->setObjectName(QString::fromUtf8("radioButton_apl"));
+        radioButton_apl->setGeometry(QRect(450, 110, 91, 19));
         tabWidget_2->addTab(Exp_Inp, QString());
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -529,9 +594,9 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget_2->setCurrentIndex(0);
-        tabWidget->setCurrentIndex(1);
-        tabWidget_3->setCurrentIndex(0);
+        tabWidget_2->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(2);
+        tabWidget_3->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -546,6 +611,8 @@ public:
         label_name_5->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Birthday :</span></p></body></html>", nullptr));
         label_name_6->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Faculty :</span></p></body></html>", nullptr));
         Button_Insert_Student->setText(QApplication::translate("MainWindow", "Save", nullptr));
+        Button_Export_S->setText(QApplication::translate("MainWindow", "Export", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Address_Exp:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_Student), QApplication::translate("MainWindow", "Student", nullptr));
         label_name_8->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Name :</span></p></body></html>", nullptr));
         label_name_9->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">LastName :</span></p></body></html>", nullptr));
@@ -553,12 +620,16 @@ public:
         label_birth_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Birthday :</span></p></body></html>", nullptr));
         label_post->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Post :</span></p></body></html>", nullptr));
         Button_Insert_Employee->setText(QApplication::translate("MainWindow", "Save", nullptr));
+        Button_Export_E->setText(QApplication::translate("MainWindow", "Export", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Address_Exp:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_Employee), QApplication::translate("MainWindow", "Employee", nullptr));
         label_name_25->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Name :</span></p></body></html>", nullptr));
         label_lastname->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">LastName :</span></p></body></html>", nullptr));
         label_patron->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Patronym :</span></p></body></html>", nullptr));
         label_birth->setText(QApplication::translate("MainWindow", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Birthday :</span></p></body></html>", nullptr));
         Button_Insert_Applicants->setText(QApplication::translate("MainWindow", "Save", nullptr));
+        Button_Export_A->setText(QApplication::translate("MainWindow", "Export", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Address_Exp:", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_Applicants), QApplication::translate("MainWindow", "Applicants", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(Add), QApplication::translate("MainWindow", "Add", nullptr));
         Button_Search->setText(QApplication::translate("MainWindow", "Find", nullptr));
@@ -584,8 +655,10 @@ public:
         tabWidget_3->setTabText(tabWidget_3->indexOf(tab_Applicants_2), QApplication::translate("MainWindow", "Applicants", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(Find), QApplication::translate("MainWindow", "Find", nullptr));
         Button_Import->setText(QApplication::translate("MainWindow", "Import", nullptr));
-        Button_Export->setText(QApplication::translate("MainWindow", "Export", nullptr));
         Button_Clear->setText(QApplication::translate("MainWindow", "Clear", nullptr));
+        radioButton_stu->setText(QApplication::translate("MainWindow", "Student", nullptr));
+        radioButton_emp->setText(QApplication::translate("MainWindow", "Employee", nullptr));
+        radioButton_apl->setText(QApplication::translate("MainWindow", "Applicants", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(Exp_Inp), QApplication::translate("MainWindow", "Exp_Inp", nullptr));
     } // retranslateUi
 
